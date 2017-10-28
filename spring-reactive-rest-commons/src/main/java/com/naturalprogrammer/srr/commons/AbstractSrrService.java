@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.naturalprogrammer.srr.commons.domain.AbstractUser;
 import com.naturalprogrammer.srr.commons.domain.AbstractUser.SignUpValidation;
 
@@ -25,7 +26,7 @@ public abstract class AbstractSrrService<U extends AbstractUser<ID>, ID extends 
 
 		user.map(this::initUser);
 		
-		return save(user);
+		return insert(user);
 		
 //		// if successfully committed
 //		LemonUtils.afterCommit(() -> {
@@ -36,7 +37,21 @@ public abstract class AbstractSrrService<U extends AbstractUser<ID>, ID extends 
 //		});
 	}
 
-	protected abstract Mono<U> save(Mono<U> user);
+	protected abstract U newUserEntity();
+	protected abstract Mono<U> insert(Mono<U> user);
+	
+	public U getUserEntity(JsonNode node) {
+		
+        String email = node.get("email").asText();
+        String password = node.get("password").asText();
+ 
+        U user = newUserEntity();
+        
+        user.setEmail(email);
+        user.setPassword(password);
+        
+        return user;
+	}
 
 	/**
 	 * Initializes the user based on the input data

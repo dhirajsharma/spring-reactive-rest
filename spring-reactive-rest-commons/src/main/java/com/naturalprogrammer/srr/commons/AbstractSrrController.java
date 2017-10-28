@@ -35,7 +35,7 @@ public abstract class AbstractSrrController<U extends AbstractUser<ID>, ID exten
 	 * @param user	data fed by the user
 	 * @return data about the logged in user
 	 */
-	@PostMapping(value = "/users"/*, produces = MediaType.APPLICATION_JSON_UTF8_VALUE*/)
+	@PostMapping(value = "/users", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Mono<U> signup(@RequestBody @JsonView(SignupInput.class) Mono<U> user) {
 		

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+    <!--The identifier of the parent POM-->
+    <parent>
+		<groupId>com.naturalprogrammer</groupId>
+		<artifactId>spring-reactive-rest</artifactId>
+		<version>${srr-version}</version>
+	</parent>
+ 
+	<name>spring-reactive-rest-mongo-demo</name>
+	<description>Demo aplication for mongo helper library for developing Spring reactive REST services</description>
+
+	<artifactId>spring-reactive-rest-mongo-demo</artifactId>
+	<packaging>jar</packaging>
+	
+	<dependencies>
+	
+		<dependency>
+			<groupId>com.naturalprogrammer</groupId>
+			<artifactId>spring-reactive-rest-mongo</artifactId>
+		</dependency>
+	
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
